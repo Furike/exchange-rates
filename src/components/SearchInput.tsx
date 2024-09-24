@@ -7,7 +7,13 @@ type Props = {
 
 const SearchInput = ({ value, setValue }: Props) => {
   const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value);
+    const newValue = e.currentTarget.value.trim();
+    setValue(newValue);
+    if (newValue) {
+      window.location.hash = "search=" + newValue;
+    } else {
+      window.location.hash = "";
+    }
   };
   return (
     <input
