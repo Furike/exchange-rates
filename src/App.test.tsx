@@ -5,7 +5,7 @@ import App from "./App";
 describe("App", () => {
   it("renders the App component", () => {
     render(<App />);
-    const heading = screen.getByRole("heading", { name: "Vite + React" });
+    const heading = screen.getByRole("heading", { name: "Exchange rates" });
     expect(heading).toBeInTheDocument();
   });
 });
