@@ -7,6 +7,7 @@ describe("ExchangeRatesList", () => {
     const rates = [
       {
         currency: "USD",
+        baseCurrency: "EUR",
         precision: 2,
         nameI18N: "US Dollar",
         exchangeRate: {
@@ -15,6 +16,7 @@ describe("ExchangeRatesList", () => {
       },
       {
         currency: "XXX",
+        baseCurrency: "EUR",
         precision: 2,
         nameI18N: undefined,
         exchangeRate: {

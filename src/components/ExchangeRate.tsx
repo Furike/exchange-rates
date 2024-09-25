@@ -11,7 +11,7 @@ type Props = {
 function ExchangeRate({ rate }: Props) {
   const sell = `${
     rate.exchangeRate?.sell?.toFixed(rate.precision ?? 0) ?? MISSING_TEXT
-  } EUR`;
+  } ${rate.baseCurrency}`;
   return (
     <div className="list-item">
       <div className="country">

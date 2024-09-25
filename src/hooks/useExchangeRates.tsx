@@ -15,6 +15,7 @@ type ExchangeAPI = {
 
 export type Exchange = Omit<ExchangeAPI, "currency"> & {
   currency: string;
+  baseCurrency: string;
 };
 
 type ApiResponse = {
@@ -23,17 +24,26 @@ type ApiResponse = {
 };
 
 const useExchangeRates = () => {
-  const [data, setData] = useState<ExchangeAPI[]>();
-  const filteredData = data ? data.filter((e) => !!e.currency?.trim()) : [];
+  const [data, setData] = useState<ApiResponse>();
 
   useEffect(() => {
     fetch(DATA_URL)
       .then((response) => response?.json())
-      .then((response: ApiResponse) => setData(response.fx))
+      .then((response: ApiResponse) => setData(response))
       .catch((err) => console.error(err));
   }, []);
 
-  return { data: filteredData as Exchange[] };
+  if (!data) {
+    return { data: [] as Exchange[] };
+  }
+
+  const filteredData = data.fx.filter((e) => !!e.currency?.trim());
+  const dataWithBaseCurrency = filteredData.map((e) => ({
+    ...e,
+    baseCurrency: data.baseCurrency,
+  }));
+
+  return { data: dataWithBaseCurrency as Exchange[] };
 };
 
 export default useExchangeRates;

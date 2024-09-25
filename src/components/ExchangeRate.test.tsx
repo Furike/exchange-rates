@@ -6,6 +6,7 @@ describe("ExchangeRate", () => {
   it("renders the ExchangeRate component", () => {
     const rate = {
       currency: "USD",
+      baseCurrency: "EUR",
       precision: 2,
       nameI18N: "US Dollar",
       exchangeRate: {
@@ -20,6 +21,7 @@ describe("ExchangeRate", () => {
   it("renders the ExchangeRate component with Missing data", () => {
     const rate = {
       currency: "USD",
+      baseCurrency: "EUR",
       precision: 2,
       nameI18N: "US Dollar",
       exchangeRate: {
@@ -28,6 +30,6 @@ describe("ExchangeRate", () => {
     };
     render(<ExchangeRate rate={rate} />);
     const sell = screen.getByTestId("sell");
-    expect(sell.textContent).toBe(MISSING_TEXT + " EUR");
+    expect(sell.textContent).toBe(`${MISSING_TEXT} ${rate.baseCurrency}`);
   });
 });
