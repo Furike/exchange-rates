@@ -11,7 +11,7 @@ function App() {
     parseHash(window.location.hash)
   );
 
-  const filteredExchanges = exchanges.data?.filter((exchange) =>
+  const filteredExchanges = exchanges.data.filter((exchange) =>
     exchange.currency.includes(searchCode.toUpperCase())
   );
 
@@ -19,7 +19,7 @@ function App() {
     <>
       <h1>Exchange rates</h1>
       <SearchInput value={searchCode} setValue={setSearchCode} />
-      {exchanges.data && <ExchangeRatesList rates={filteredExchanges} />}
+      <ExchangeRatesList rates={filteredExchanges} />
     </>
   );
 }

@@ -24,7 +24,7 @@ type ApiResponse = {
 
 const useExchangeRates = () => {
   const [data, setData] = useState<ExchangeAPI[]>();
-  const filteredData = data?.filter((e) => !!e.currency?.trim());
+  const filteredData = data ? data.filter((e) => !!e.currency?.trim()) : [];
 
   useEffect(() => {
     fetch(DATA_URL)
