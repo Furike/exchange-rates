@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const UNKNOWN_FLAG = "unknown";
+export const UNKNOWN_FLAG = "unknown";
 
 type Props = {
   countryCode: string;
