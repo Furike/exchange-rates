@@ -1,12 +1,14 @@
 import { useState } from "react";
 
+const UNKNOWN_FLAG = "unknown";
+
 type Props = {
   countryCode: string;
 };
 
 const Flag = ({ countryCode }: Props) => {
   const [error, setError] = useState(false);
-  const src = error ? "/public/vite.svg" : `/public/flags/${countryCode}.png`;
+  const src = `/flags/${error ? UNKNOWN_FLAG : countryCode.toLowerCase()}.png`;
 
   const onError = () => {
     setError(true);

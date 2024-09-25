@@ -8,6 +8,6 @@ describe("Flag", () => {
     render(<Flag countryCode={code} />);
     const image = screen.getByRole("img");
     expect(image).toBeInTheDocument();
-    expect(image.getAttribute("src")).toBe(`/public/flags/${code}.png`);
+    expect(image.getAttribute("src")).toBe(`/flags/${code.toLowerCase()}.png`);
   });
 });
